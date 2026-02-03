@@ -92,6 +92,12 @@ button {
   animation: pulse 1.2s infinite;
 }
 
+#giftBtn {
+  background:#ff6fae;
+  color:white;
+  animation: pulse 1.2s infinite;
+}
+
 /* Vibración */
 .vibrate {
   animation: vibrate 0.15s infinite;
@@ -164,17 +170,22 @@ button {
 <body>
 <div class="container">
 
-<h1 id="title">¿Quieres ser mi San Valentín, bizcochito mío? 💕</h1>
+<h1 id="title">¿Quieres ser mi San Valentín? 💕</h1>
 
 <img id="catImage" src="images/seductor_inicio.png">
 
 <p id="finalText" class="final-text" style="display:none;">
-Más te vale, bobita 😌✨💘
+Claramente era la respuesta acertada, bobita 😌✨💘
 </p>
 
 <p id="warningText" class="warning-text" style="display:none;">
-LAST WARNING
+DUDAS DE QUÉ TONTITA, DALE A VOLVER Y CLICA BIEN, LAST WARNING
 </p>
+
+<!-- Botón regalo (debajo de warningText) -->
+<div id="giftContainer" style="display:none;">
+  <button id="giftBtn">Mira tu regalo</button>
+</div>
 
 <div id="buttons">
 <button id="yesBtn">Sí</button>
@@ -193,6 +204,8 @@ const y=document.getElementById("yesBtn"),
 n=document.getElementById("noBtn"),
 m=document.getElementById("maybeBtn"),
 b=document.getElementById("backBtn"),
+g=document.getElementById("giftBtn"),
+gc=document.getElementById("giftContainer"),
 img=document.getElementById("catImage"),
 ft=document.getElementById("finalText"),
 wt=document.getElementById("warningText"),
@@ -200,7 +213,7 @@ btns=document.getElementById("buttons"),
 bc=document.getElementById("backContainer"),
 t=document.getElementById("title");
 
-const originalTitle="¿Quieres ser mi San Valentín, bizcochito mío? 💕";
+const originalTitle="¿Quieres ser mi San Valentín? 💕";
 
 let s=1,i=0;
 
@@ -225,6 +238,7 @@ img.classList.add("zoom-in");
 btns.style.display="none";
 bc.style.display="block";
 wt.style.display="block";
+gc.style.display="none";
 };
 
 b.onclick=()=>{
@@ -234,6 +248,7 @@ img.classList.remove("zoom-in");
 btns.style.display="block";
 bc.style.display="none";
 wt.style.display="none";
+gc.style.display="none";
 };
 
 y.onclick=()=>{
@@ -244,7 +259,12 @@ btns.style.display="none";
 t.style.display="none";
 wt.style.display="none";
 bc.style.display="none";
+gc.style.display="block";
 confetti();
+};
+
+g.onclick=()=>{
+img.src="images/golosa1.png";
 };
 
 function confetti(){
