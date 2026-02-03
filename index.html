@@ -170,16 +170,16 @@ button {
 <body>
 <div class="container">
 
-<h1 id="title">¿Quieres ser mi San Valentín? 💕</h1>
+<h1 id="title">¿Quieres ser mi San Valentín, bizcochito mío? 💕</h1>
 
 <img id="catImage" src="images/seductor_inicio.png">
 
 <p id="finalText" class="final-text" style="display:none;">
-Claramente era la respuesta acertada, bobita 😌✨💘
+MÁS TE VALE, BOBITA  😌✨💘
 </p>
 
 <p id="warningText" class="warning-text" style="display:none;">
-DUDAS DE QUÉ TONTITA, DALE A VOLVER Y CLICA BIEN, LAST WARNING
+CLICA BIEN, LAST WARNING
 </p>
 
 <!-- Botón regalo (debajo de warningText) -->
@@ -213,7 +213,7 @@ btns=document.getElementById("buttons"),
 bc=document.getElementById("backContainer"),
 t=document.getElementById("title");
 
-const originalTitle="¿Quieres ser mi San Valentín? 💕";
+const originalTitle="¿Quieres ser mi San Valentín, bizcochito mío? 💕";
 
 let s=1,i=0;
 
@@ -265,6 +265,13 @@ confetti();
 
 g.onclick=()=>{
 img.src="images/golosa1.png";
+
+  // Ocultar todo lo demás, dejar solo la imagen + fondo + corazones
+  ft.style.display="none";
+  wt.style.display="none";
+  gc.style.display="none";
+  btns.style.display="none";
+  bc.style.display="none";
 };
 
 function confetti(){
