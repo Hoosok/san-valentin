@@ -89,6 +89,18 @@ button {
   color: white;
 }
 
+/* Botón No lo sé */
+#maybeBtn {
+  background-color: #ff922b;
+  color: white;
+}
+
+/* Botón volver */
+#backBtn {
+  background-color: #4dabf7;
+  color: white;
+}
+
 /* Vibración */
 .vibrate {
   animation: vibrate 0.15s infinite;
@@ -149,6 +161,11 @@ button {
 <div id="buttons">
   <button id="yesBtn">Sí</button>
   <button id="noBtn">No</button>
+  <button id="maybeBtn">No lo sé</button>
+</div>
+
+<div id="backContainer" style="display:none;">
+  <button id="backBtn">Volver</button>
 </div>
 
 </div>
@@ -156,9 +173,13 @@ button {
 <script>
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
+const maybeBtn = document.getElementById("maybeBtn");
+const backBtn = document.getElementById("backBtn");
+
 const catImage = document.getElementById("catImage");
 const finalText = document.getElementById("finalText");
 const buttons = document.getElementById("buttons");
+const backContainer = document.getElementById("backContainer");
 const title = document.getElementById("title");
 
 let scale = 1;
@@ -173,6 +194,7 @@ const sadCats = [
 
 let sadIndex = 0;
 
+/* NO */
 noBtn.addEventListener("click", () => {
   catImage.src = sadCats[sadIndex];
   sadIndex = (sadIndex + 1) % sadCats.length;
@@ -184,6 +206,7 @@ noBtn.addEventListener("click", () => {
   setTimeout(() => yesBtn.classList.remove("vibrate"), 300);
 });
 
+/* SÍ */
 yesBtn.addEventListener("click", () => {
   catImage.src = "images/gato_rosa.gif";
   catImage.classList.add("final-image");
@@ -191,8 +214,23 @@ yesBtn.addEventListener("click", () => {
   finalText.style.display = "block";
   buttons.style.display = "none";
   title.style.display = "none";
+  backContainer.style.display = "none";
 
   launchConfetti();
+});
+
+/* NO LO SÉ */
+maybeBtn.addEventListener("click", () => {
+  catImage.src = "images/volver1.png";
+  buttons.style.display = "none";
+  backContainer.style.display = "block";
+});
+
+/* VOLVER */
+backBtn.addEventListener("click", () => {
+  catImage.src = "images/seductor_inicio.png";
+  buttons.style.display = "block";
+  backContainer.style.display = "none";
 });
 
 /* Confeti */
