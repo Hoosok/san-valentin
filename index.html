@@ -125,13 +125,32 @@ button {
     transform: translateY(110vh) rotate(720deg);
   }
 }
+  .heart {
+  position: fixed;
+  bottom: -20px;
+  color: rgba(255,77,109,0.4);
+  font-size: 20px;
+  animation: floatUp linear infinite;
+  z-index: 0;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
 </style>
 </head>
 
 <body>
 <div class="container">
 
-<h1 id="title">¿Quieres ser mi San Valentín? 💕</h1>
+<h1 id="title">¿Quieres ser mi San Valentín, bizcochito de chocolate? 💕</h1>
 
 <img id="catImage" src="images/seductor_inicio.png" alt="Gato seductor">
 
@@ -157,11 +176,11 @@ const title = document.getElementById("title");
 let scale = 1;
 
 const sadCats = [
-  "images/triste1.png",
+  "images/triste1.gif",
   "images/triste2.png",
-  "images/triste3.png",
+  "images/triste3.gif",
   "images/triste4.png",
-  "images/triste5.png"
+  "images/triste5.gif"
 ];
 
 let sadIndex = 0;
@@ -178,7 +197,7 @@ noBtn.addEventListener("click", () => {
 });
 
 yesBtn.addEventListener("click", () => {
-  catImage.src = "images/gato_rosa.png";
+  catImage.src = "images/gato_rosa.gif";
   catImage.classList.add("final-image");
 
   finalText.style.display = "block";
@@ -208,6 +227,21 @@ function randomColor() {
   const colors = ["#ff4d6d", "#ffd166", "#06d6a0", "#4dabf7", "#c77dff"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
+  /* ❤️ Generador de corazones */
+
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText = "❤️";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+  heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 10000);
+}, 700);
 </script>
 
 </body>
