@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* 🌈 Fondo animado */
+/* Fondo animado romántico */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -47,14 +47,14 @@ img {
   transition: transform 0.6s ease;
 }
 
-/* Imagen final ajustada */
+/* Imagen final */
 .final-image {
   max-width: 75vw;
   max-height: 60vh;
   transform: scale(1.1);
 }
 
-/* Texto final animado */
+/* Texto final */
 .final-text {
   font-size: 1.5em;
   margin-top: 15px;
@@ -64,17 +64,9 @@ img {
 }
 
 @keyframes popIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { opacity: 0; transform: scale(0.8); }
+  60% { opacity: 1; transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 button {
@@ -98,151 +90,4 @@ button {
 }
 
 /* Vibración */
-.vibrate {
-  animation: vibrate 0.15s infinite;
-}
-
-@keyframes vibrate {
-  0% { transform: translate(0); }
-  25% { transform: translate(-2px, 2px); }
-  50% { transform: translate(2px, -2px); }
-  75% { transform: translate(-2px, -2px); }
-  100% { transform: translate(2px, 2px); }
-}
-
-/* 🎉 Confeti */
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  top: -10px;
-  animation: fall linear forwards;
-  z-index: 1;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(720deg);
-  }
-}
-  .heart {
-  position: fixed;
-  bottom: -20px;
-  color: rgba(255,77,109,0.4);
-  font-size: 20px;
-  animation: floatUp linear infinite;
-  z-index: 0;
-}
-
-@keyframes floatUp {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
-}
-</style>
-</head>
-
-<body>
-<div class="container">
-
-<h1 id="title">¿Quieres ser mi San Valentín, bizcochito de chocolate? 💕</h1>
-
-<img id="catImage" src="images/seductor_inicio.png" alt="Gato seductor">
-
-<p id="finalText" class="final-text" style="display:none;">
-  Claramente era la respuesta acertada, bobita 😌✨💘
-</p>
-
-<div id="buttons">
-  <button id="yesBtn">Sí</button>
-  <button id="noBtn">No</button>
-</div>
-
-</div>
-
-<script>
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const catImage = document.getElementById("catImage");
-const finalText = document.getElementById("finalText");
-const buttons = document.getElementById("buttons");
-const title = document.getElementById("title");
-
-let scale = 1;
-
-const sadCats = [
-  "images/triste1.gif",
-  "images/triste2.png",
-  "images/triste3.gif",
-  "images/triste4.png",
-  "images/triste5.gif"
-];
-
-let sadIndex = 0;
-
-noBtn.addEventListener("click", () => {
-  catImage.src = sadCats[sadIndex];
-  sadIndex = (sadIndex + 1) % sadCats.length;
-
-  scale += 0.18;
-  yesBtn.style.transform = `scale(${scale})`;
-
-  yesBtn.classList.add("vibrate");
-  setTimeout(() => yesBtn.classList.remove("vibrate"), 300);
-});
-
-yesBtn.addEventListener("click", () => {
-  catImage.src = "images/gato_rosa.gif";
-  catImage.classList.add("final-image");
-
-  finalText.style.display = "block";
-  buttons.style.display = "none";
-  title.style.display = "none";
-
-  launchConfetti();
-});
-
-/* 🎉 Confeti prolongado */
-function launchConfetti() {
-  for (let i = 0; i < 120; i++) {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.backgroundColor = randomColor();
-    confetti.style.animationDuration = (Math.random() * 3 + 4) + "s";
-
-    document.body.appendChild(confetti);
-
-    setTimeout(() => confetti.remove(), 7000);
-  }
-}
-
-function randomColor() {
-  const colors = ["#ff4d6d", "#ffd166", "#06d6a0", "#4dabf7", "#c77dff"];
-  return colors[Math.floor(Math.random() * colors.length)];
-}
-  /* ❤️ Generador de corazones */
-
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerText = "❤️";
-
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
-  heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
-
-  document.body.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 10000);
-}, 700);
-</script>
-
-</body>
-</html>
+.vibr
