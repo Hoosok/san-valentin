@@ -6,22 +6,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+/* 🌈 Fondo animado */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #ffe6ee;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   text-align: center;
   overflow: hidden;
+  background: linear-gradient(270deg, #ffe6ee, #ffd6e8, #ffe6ee);
+  background-size: 600% 600%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .container {
   width: 100%;
   padding: 20px;
   position: relative;
+  z-index: 2;
 }
 
 h1 {
@@ -37,18 +47,34 @@ img {
   transition: transform 0.6s ease;
 }
 
-/* Imagen final grande + zoom */
+/* Imagen final ajustada */
 .final-image {
-  max-width: 90vw;
-  max-height: 70vh;
-  transform: scale(1.15);
+  max-width: 75vw;
+  max-height: 60vh;
+  transform: scale(1.1);
 }
 
+/* Texto final animado */
 .final-text {
-  font-size: 1.4em;
+  font-size: 1.5em;
   margin-top: 15px;
   color: #d6336c;
   font-weight: bold;
+  animation: popIn 0.8s ease forwards;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 button {
@@ -67,7 +93,7 @@ button {
 }
 
 #noBtn {
-  background-color: #999;
+  background-color: #4dabf7;
   color: white;
 }
 
@@ -84,19 +110,19 @@ button {
   100% { transform: translate(2px, 2px); }
 }
 
-/* 🎉 CONFETI */
+/* 🎉 Confeti */
 .confetti {
   position: fixed;
   width: 10px;
   height: 10px;
-  background-color: red;
   top: -10px;
   animation: fall linear forwards;
+  z-index: 1;
 }
 
 @keyframes fall {
   to {
-    transform: translateY(110vh) rotate(360deg);
+    transform: translateY(110vh) rotate(720deg);
   }
 }
 </style>
@@ -144,7 +170,7 @@ noBtn.addEventListener("click", () => {
   catImage.src = sadCats[sadIndex];
   sadIndex = (sadIndex + 1) % sadCats.length;
 
-  scale += 0.25;
+  scale += 0.18;
   yesBtn.style.transform = `scale(${scale})`;
 
   yesBtn.classList.add("vibrate");
@@ -162,19 +188,19 @@ yesBtn.addEventListener("click", () => {
   launchConfetti();
 });
 
-/* 🎉 Función confeti */
+/* 🎉 Confeti prolongado */
 function launchConfetti() {
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 120; i++) {
     const confetti = document.createElement("div");
     confetti.classList.add("confetti");
 
     confetti.style.left = Math.random() * 100 + "vw";
     confetti.style.backgroundColor = randomColor();
-    confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+    confetti.style.animationDuration = (Math.random() * 3 + 4) + "s";
 
     document.body.appendChild(confetti);
 
-    setTimeout(() => confetti.remove(), 4000);
+    setTimeout(() => confetti.remove(), 7000);
   }
 }
 
