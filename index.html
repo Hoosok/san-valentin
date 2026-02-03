@@ -76,10 +76,21 @@ button {
   transition: all 0.3s ease;
 }
 
-#yesBtn { background:#ff4d6d; color:white; }
+/* Botones */
+#yesBtn {
+  background:#ff4d6d;
+  color:white;
+  animation: pulse 1.2s infinite;
+}
+
 #noBtn { background:#4dabf7; color:white; }
 #maybeBtn { background:#ff922b; color:white; }
-#backBtn { background:#4dabf7; color:white; animation: pulse 1.2s infinite; }
+
+#backBtn {
+  background:#4dabf7;
+  color:white;
+  animation: pulse 1.2s infinite;
+}
 
 /* Vibración */
 .vibrate {
@@ -94,13 +105,14 @@ button {
   100% { transform: translate(2px, 2px); }
 }
 
-/* Pulso volver */
+/* Pulso */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.08); }
   100% { transform: scale(1); }
 }
 
+/* Confeti */
 .confetti {
   position: fixed;
   width: 10px;
@@ -114,6 +126,7 @@ button {
   to { transform: translateY(110vh) rotate(720deg); }
 }
 
+/* Corazones */
 .heart {
   position: fixed;
   bottom: -20px;
@@ -136,6 +149,7 @@ button {
   animation: vibrate 0.2s infinite;
 }
 
+/* Zoom volver */
 .zoom-in {
   animation: zoomIn 0.6s ease forwards;
 }
@@ -150,7 +164,7 @@ button {
 <body>
 <div class="container">
 
-<h1 id="title">¿Quieres ser mi San Valentín, bizcochito de chocolate con limón? 💕</h1>
+<h1 id="title">¿Quieres ser mi San Valentín? 💕</h1>
 
 <img id="catImage" src="images/seductor_inicio.png">
 
@@ -175,8 +189,6 @@ DUDAS DE QUÉ TONTITA, DALE A VOLVER Y CLICA BIEN, LAST WARNING
 </div>
 
 <script>
-const yesBtn=noBtn=maybeBtn=backBtn=null;
-
 const y=document.getElementById("yesBtn"),
 n=document.getElementById("noBtn"),
 m=document.getElementById("maybeBtn"),
@@ -187,6 +199,8 @@ wt=document.getElementById("warningText"),
 btns=document.getElementById("buttons"),
 bc=document.getElementById("backContainer"),
 t=document.getElementById("title");
+
+const originalTitle="¿Quieres ser mi San Valentín? 💕";
 
 let s=1,i=0;
 
@@ -205,6 +219,7 @@ y.classList.add("vibrate");setTimeout(()=>y.classList.remove("vibrate"),300);
 };
 
 m.onclick=()=>{
+t.innerText="¿A que te quedas sin Valentines por graciosa?";
 img.src="images/volver1.png";
 img.classList.add("zoom-in");
 btns.style.display="none";
@@ -213,6 +228,7 @@ wt.style.display="block";
 };
 
 b.onclick=()=>{
+t.innerText=originalTitle;
 img.src="images/seductor_inicio.png";
 img.classList.remove("zoom-in");
 btns.style.display="block";
